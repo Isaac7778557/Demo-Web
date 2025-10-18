@@ -1,12 +1,15 @@
+<?php
+$servidor = "localhost";
+$usuario = "root";
+$clave = "";
+$basedeatos = "pagina-web";
+
+$enlace = mysqli_connect($servidor, $usuario, $clave, $basedeatos);
+?>
 <!DOCTYPE html>
-<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Las Nebulosas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <head><link rel="icon" href="D:\ULTIMO AÑO\HTML\HTML\Primer Semestre\Primer Parcial\nube.png" type="image/png"></head>
-    
     <style>
         * {
             margin: 0;
@@ -333,11 +336,12 @@
         </div>
         <div class="contact-form" id="contact">
             <h3>Contáctame</h3>
-            <form action="mailto:ejemplo@correo.com" method="post" enctype="text/plain">
-                <input type="text" name="name" placeholder="Tu nombre" required>
-                <input type="email" name="email" placeholder="Tu correo electrónico" required>
-                <textarea name="message" rows="5" placeholder="Tu mensaje" required></textarea>
-                <button type="submit">Enviar</button>
+            <form action="#" name="Pagina-Web" method="post">
+                <input type="text" name="name" placeholder="Tu nombre" >
+                <input type="email" name="email" placeholder="Tu correo electrónico">
+                <textarea name="message" rows="5" placeholder="Tu mensaje"></textarea>
+                <input type="submit" name="registro">
+                <input type="reset">
             </form>
         </div>
         <div class="footer">
@@ -424,4 +428,16 @@
     </script>
     
 </body>
+<?php
+if(isset($_POST['registro'])){
+    $nombre = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+
+    $insertarDatos = "INSERT INTO cuestion VALUES ('$nombre','$email','$message','')";
+    $ejecutarInsertar = mysqli_query ($enlace, $insertarDatos);
+
+
+}
+?>
 
